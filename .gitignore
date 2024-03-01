@@ -18,6 +18,7 @@
 # vendor/
 
 .env
+.DS_Store
 
 # Go workspace file
 go.work
