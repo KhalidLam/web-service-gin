@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/spf13/viper"
+	"github.com/KhalidLam/web-service-gin/util"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -21,7 +21,12 @@ func GetClient() *mongo.Client {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	uri := viper.GetString("MONGODB_URI")
+	config, err := util.LoadConfig(".")
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
+	uri := config.DBSource
+
 	if uri == "" {
 		log.Fatal("mongodb uri string not found!")
 	}

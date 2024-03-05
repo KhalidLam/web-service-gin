@@ -19,6 +19,7 @@
 
 .env
 .DS_Store
+app.env
 
 # Go workspace file
 go.work

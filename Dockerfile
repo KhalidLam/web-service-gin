@@ -18,6 +18,7 @@ FROM alpine:3.14
  
 # Set environment variable
 ENV APP_NAME dockerize-web-service-gin-app
+ENV CMD_PATH main.go
  
 # Copy only required data into this image
 COPY --from=build-env /$APP_NAME .
